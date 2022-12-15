@@ -27,6 +27,8 @@ class CheckBingoBoards extends Command
     ): int {
         $bingo = new Bingo();
 
+        $bingo->start(STDIN);
+
         return Command::SUCCESS;
     }
 }
