@@ -1,5 +1,7 @@
 # tbingo
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Input specs:
 
  - Any line with a comma in it is considered a new game.
