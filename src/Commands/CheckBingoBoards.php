@@ -6,7 +6,6 @@ use ElliottLandsborough\TerminalBingo\Services\Bingo;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -42,7 +41,7 @@ class CheckBingoBoards extends Command
 
         foreach ($winners as $position => $board) {
             $output->writeln("The first win after $position numbers:\n");
-            $decoration = "BINGO";
+            $decoration = 'BINGO';
             $relevantBalls = array_slice($balls, 0, $position);
 
             foreach ($board as $key => $numbers) {
@@ -54,7 +53,7 @@ class CheckBingoBoards extends Command
 
                     $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
 
-                    $rowStrings[] = $prefix . $padded . $suffix;
+                    $rowStrings[] = $prefix.$padded.$suffix;
                 }
 
                 $rows[] = [$decoration[$key], implode(' ', $rowStrings)];
