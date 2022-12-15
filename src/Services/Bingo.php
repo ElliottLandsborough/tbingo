@@ -8,6 +8,22 @@ class Bingo
 {
     protected $winners = [];
     protected $losers = [];
+    protected $balls = [];
+
+    public function getWinners()
+    {
+        return $this->winners;
+    }
+
+    public function getLosers()
+    {
+        return $this->losers;
+    }
+
+    public function getBalls()
+    {
+        return $this->balls;
+    }
 
     protected function stdinStream()
     {
@@ -18,7 +34,6 @@ class Bingo
 
     public function start($resource): void
     {
-        $balls = [];
         $board = [];
         $lineNumber = 0;
 
@@ -33,7 +48,7 @@ class Bingo
 
             // Was a ballset defined?
             if (str_contains($line, ",")) {
-                $balls = explode(",", $line);
+                $this->balls = explode(",", $line);
                 continue;
             }
 
@@ -49,7 +64,7 @@ class Bingo
                     // Did we reach the board row limit of 5?
                     if (count($board) === 5) {
                         // Process board
-                        $winPosition = $this->checkForWinner($balls, $board);
+                        $winPosition = $this->checkForWinner($board);
 
                         if ($winPosition > 0) {
                             $this->winners[$winPosition] = $board;
@@ -73,9 +88,8 @@ class Bingo
             }
         }
 
+        // Sort winners by key
         ksort($this->winners);
-        print_r($this->winners);
-        print_r($this->losers);
     }
 
     protected function generateWinningRows(array $board): array
@@ -115,14 +129,14 @@ class Bingo
         return $diagonalRows;
     }
 
-    protected function checkForWinner(array $balls, array $board): int
+    protected function checkForWinner(array $board): int
     {
         $winningRows = $this->generateWinningRows($board);
 
         $gamePosition = 0;
 
         // Each game ball, in order...
-        foreach ($balls as $bNumber) {
+        foreach ($this->balls as $bNumber) {
             // Increment game position
             $gamePosition++;
 

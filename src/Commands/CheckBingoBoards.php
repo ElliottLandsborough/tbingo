@@ -29,6 +29,44 @@ class CheckBingoBoards extends Command
 
         $bingo->start(STDIN);
 
+        $winners = $bingo->getWinners();
+        $losers = $bingo->getLosers();
+        $balls = $bingo->getBalls();
+
+        $winCount = count($winners);
+        $lossCount = count($losers);
+
+        $output->writeln("There were $winCount wins and $lossCount losses.\n");
+
+        $rows = [];
+
+        foreach ($winners as $position => $board) {
+            $output->writeln("The first win after $position numbers:\n");
+            $decoration = "BINGO";
+            $relevantBalls = array_slice($balls, 0, $position);
+
+            foreach ($board as $key => $numbers) {
+                $rowStrings = [];
+
+                foreach ($numbers as $number) {
+                    $prefix = in_array($number, $relevantBalls) ? '<info>' : '';
+                    $suffix = in_array($number, $relevantBalls) ? '</info>' : '';
+
+                    $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
+
+                    $rowStrings[] = $prefix . $padded . $suffix;
+                }
+
+                $rows[] = [$decoration[$key], implode(' ', $rowStrings)];
+            }
+
+            break;
+        }
+
+        $table = new Table($output);
+        $table->setRows($rows);
+        $table->render();
+
         return Command::SUCCESS;
     }
 }
