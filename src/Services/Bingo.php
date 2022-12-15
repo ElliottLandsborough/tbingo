@@ -2,8 +2,6 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
-use Exception;
-
 class Bingo
 {
     protected $winners = [];
@@ -47,13 +45,13 @@ class Bingo
             }
 
             // Was a ballset defined?
-            if (str_contains($line, ",")) {
-                $this->balls = explode(",", $line);
+            if (str_contains($line, ',')) {
+                $this->balls = explode(',', $line);
                 continue;
             }
 
             // Line is longer than 0 chars, line does not contain comma
-            if (strlen($line) > 0 && !str_contains($line, ",")) {
+            if (strlen($line) > 0 && !str_contains($line, ',')) {
                 // Split line by multiple spaces
                 $parts = preg_split('/\s+/', $line);
 
@@ -120,10 +118,10 @@ class Bingo
 
         for ($i = 0; $i <= 4; $i++) {
             // Diagonal row 1
-            $diagonalRows[0][] =  $board[$i][$i];
+            $diagonalRows[0][] = $board[$i][$i];
 
             // Diagonal row 2
-            $diagonalRows[1][] =  $board[$i][4 - $i];
+            $diagonalRows[1][] = $board[$i][4 - $i];
         }
 
         return $diagonalRows;
