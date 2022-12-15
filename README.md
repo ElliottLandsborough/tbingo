@@ -42,9 +42,9 @@ The first win after 12 numbers:
 ```
 
 # Input Specs
- - Any line with a comma separated numbers in it is considered a new game (e.g 1,2,3,4,5,6)
- - Any line with 5 numbers in it and no commas is considered a card row (e.g 1 2 3 4 5)
- - Cards have to be separated by at least one new line
- - Each game element has to be separated by (at least) one new line
- - Each board can be a maximum of 5 rows. Extra rows get dropped until the next blank line
- - Only one game per execution
+- Any line with a comma separated numbers in it is considered a new game (e.g 1,2,3,4,5,6)
+- Any line with 5 numbers in it and no commas is considered a card row (e.g 1 2 3 4 5)
+- Cards have to be separated by at least one new line
+- Each game element has to be separated by (at least) one new line
+- Each board can be a maximum of 5 rows. Extra rows get dropped until the next blank line
+- Only one game per execution

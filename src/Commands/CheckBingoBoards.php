@@ -15,8 +15,8 @@ class CheckBingoBoards extends Command
     /**
      * Execute the command.
      *
-     * @param InputInterface  $input
-     * @param OutputInterface $output
+     * @param InputInterface  $input  The terminal input
+     * @param OutputInterface $output The terminal output
      *
      * @return int 0 if everything went fine, or an exit code.
      */

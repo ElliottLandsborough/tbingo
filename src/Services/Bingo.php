@@ -4,25 +4,62 @@ namespace ElliottLandsborough\TerminalBingo\Services;
 
 class Bingo
 {
+    /**
+     * Undocumented variable
+     *
+     * @var array<int, array<int, array<int>>
+     */
     protected $winners = [];
+
+    /**
+     * Undocumented variable
+     *
+     * @var array<int, array<int, array<int>>
+     */
     protected $losers = [];
+
+    /**
+     * Undocumented variable
+     *
+     * @var array<int>
+     */
     protected $balls = [];
 
-    public function getWinners()
+    /**
+     * Undocumented function
+     *
+     * @return array<int>
+     */
+    public function getWinners(): array
     {
         return $this->winners;
     }
 
-    public function getLosers()
+    /**
+     * Undocumented function
+     *
+     * @return array<int>
+     */
+    public function getLosers(): array
     {
         return $this->losers;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return array<int>
+     */
     public function getBalls()
     {
         return $this->balls;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return ??
+     */
     protected function stdinStream()
     {
         while ($line = fgets(STDIN)) {
@@ -30,10 +67,17 @@ class Bingo
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param resource $resource
+     * @return void
+     */
     public function start($resource): void
     {
         $board = [];
         $lineNumber = 0;
+        $this->balls = [];
 
         foreach ($this->stdinStream() as $line) {
             $lineNumber++;
@@ -46,12 +90,17 @@ class Bingo
 
             // Was a ballset defined?
             if (str_contains($line, ',')) {
-                $this->balls = explode(',', $line);
+                $exploded = explode(',', $line);
+
+                foreach ($exploded as $number) {
+                    $this->balls[] = intval(trim($number), 10);
+                }
+
                 continue;
             }
 
             // Line is longer than 0 chars, line does not contain comma
-            if (strlen($line) > 0 && !str_contains($line, ',')) {
+            if (strlen($line) > 0) {
                 // Split line by multiple spaces
                 $parts = preg_split('/\s+/', $line);
 
@@ -90,6 +139,12 @@ class Bingo
         ksort($this->winners);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $board
+     * @return array
+     */
     protected function generateWinningRows(array $board): array
     {
         $horizontal = $board;
@@ -99,6 +154,12 @@ class Bingo
         return $horizontal + $vertical + $diagonal;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $board
+     * @return array
+     */
     protected function generateVerticalRows(array $board): array
     {
         $verticalRows = [];
@@ -112,6 +173,12 @@ class Bingo
         return $verticalRows;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $board
+     * @return array
+     */
     protected function generateDiagonalRows(array $board): array
     {
         $diagonalRows = [];
@@ -127,6 +194,12 @@ class Bingo
         return $diagonalRows;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $board
+     * @return integer
+     */
     protected function checkForWinner(array $board): int
     {
         $winningRows = $this->generateWinningRows($board);
