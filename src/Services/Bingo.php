@@ -148,7 +148,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board
+     * @param array $board A bingo board
      *
      * @return array
      */
@@ -164,7 +164,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board
+     * @param array $board A bingo board
      *
      * @return array
      */
@@ -184,7 +184,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board
+     * @param array $board A bingo board
      *
      * @return array
      */
@@ -206,7 +206,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board
+     * @param array $board A bingo board
      *
      * @return int
      */
