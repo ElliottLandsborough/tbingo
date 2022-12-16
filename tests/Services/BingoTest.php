@@ -35,11 +35,24 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests nothing.
+     * Tests a horizontal row
      *
      * @return void
      */
-    public function testNothing(): void
+    public function testHorizontal1(): void
     {
+        $this->bingo->processResource(
+            getcwd() . '/tests/fixtures/horizontal1.txt'
+        );
+
+        $winners = $this->bingo->getWinners();
+
+        $this->assertArrayHasKey(10, $winners);
+        $this->assertArrayHasKey(2, $winners[10]);
+
+        $this->assertEquals(
+            [5, 4, 3, 2, 1],
+            $winners[10][2]
+        );
     }
 }

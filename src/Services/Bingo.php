@@ -2,6 +2,8 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
+use Exception;
+
 class Bingo
 {
     /**
@@ -70,13 +72,13 @@ class Bingo
     }
 
     /**
-     * Parse stdin line by line.
+     * Stream file line by line.
      *
      * @param resource $resource File resource
      *
      * @return \Generator
      */
-    protected function stdinStream($resource): \Generator
+    protected function fileStream($resource): \Generator
     {
         try {
             while (true) {
@@ -113,13 +115,19 @@ class Bingo
     /**
      * Process a resource line by line.
      *
-     * @param resource $resource The input, multiline text
+     * @param string $path Path to input file (or stdin)
      *
      * @return void
      */
-    public function processResource($resource): void
+    public function processResource(string $path): void
     {
-        foreach ($this->stdinStream($resource) as $line) {
+        $resource = fopen($path, 'r');
+
+        if ($resource === false) {
+            throw new Exception("Could not open $path.");
+        }
+
+        foreach ($this->fileStream($resource) as $line) {
             // Skip newlines without any other content.
             if (strlen($line) === 0 && str_contains($line, "\n") === true) {
                 continue;
