@@ -32,7 +32,7 @@ class CheckBingoBoards extends Command
     }
 
     /**
-     * Generated the terminal output
+     * Generated the terminal output.
      *
      * @param OutputInterface $output Output interface
      * @param Bingo           $bingo  Bingo instance
