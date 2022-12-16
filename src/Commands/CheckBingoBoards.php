@@ -53,12 +53,12 @@ class CheckBingoBoards extends Command
 
                     $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
 
-                    $rowStrings[] = $p . $padded . $s;
+                    $rowStrings[] = $p.$padded.$s;
                 }
 
                 $rows[] = [
                     $decoration[$key],
-                    implode(' ', $rowStrings)
+                    implode(' ', $rowStrings),
                 ];
             }
 
