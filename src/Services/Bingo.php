@@ -219,6 +219,7 @@ class Bingo
             // Only accept numeric chars.
             if (ctype_digit($potentialNumber) === false) {
                 $message = "Invalid game: `$potentialNumber` is not a number.";
+
                 throw new Exception($message);
             }
 
@@ -226,9 +227,9 @@ class Bingo
 
             if ($number > 75) {
                 $message = "Invalid game: Only 1-75 are ok. `$number` is too high.";
+
                 throw new Exception($message);
             }
-
 
             $balls[] = (int) $number;
         }

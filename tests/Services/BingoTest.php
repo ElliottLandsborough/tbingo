@@ -35,14 +35,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a horizontal row
+     * Tests a horizontal row.
      *
      * @return void
      */
     public function testHorizontal1(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/horizontal1.txt'
+            getcwd().'/tests/fixtures/horizontal1.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -57,14 +57,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a horizontal row
+     * Tests a horizontal row.
      *
      * @return void
      */
     public function testHorizontal2(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/horizontal2.txt'
+            getcwd().'/tests/fixtures/horizontal2.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -79,14 +79,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a vertical row
+     * Tests a vertical row.
      *
      * @return void
      */
     public function testVertical1(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/vertical1.txt'
+            getcwd().'/tests/fixtures/vertical1.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -102,14 +102,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a vertical row
+     * Tests a vertical row.
      *
      * @return void
      */
     public function testVertical2(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/vertical2.txt'
+            getcwd().'/tests/fixtures/vertical2.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -125,14 +125,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a diagonal row
+     * Tests a diagonal row.
      *
      * @return void
      */
     public function testDiagonal1(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/diagonal1.txt'
+            getcwd().'/tests/fixtures/diagonal1.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -148,14 +148,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a diagonal row
+     * Tests a diagonal row.
      *
      * @return void
      */
     public function testDiagonal2(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/diagonal2.txt'
+            getcwd().'/tests/fixtures/diagonal2.txt'
         );
 
         $winners = $this->bingo->getWinners();
@@ -171,14 +171,14 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a bad board
+     * Tests a bad board.
      *
      * @return void
      */
     public function testBadBoard1(): void
     {
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/badBoard1.txt'
+            getcwd().'/tests/fixtures/badBoard1.txt'
         );
 
         $errors = $this->bingo->getErrors();
@@ -188,34 +188,34 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests a bad game
+     * Tests a bad game.
      *
      * @return void
      */
     public function testBadGame1(): void
     {
         $this->expectExceptionMessage(
-            "Invalid game: Only 1-75 are ok. `76` is too high."
+            'Invalid game: Only 1-75 are ok. `76` is too high.'
         );
 
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/badGame1.txt'
+            getcwd().'/tests/fixtures/badGame1.txt'
         );
     }
 
     /**
-     * Tests a bad game
+     * Tests a bad game.
      *
      * @return void
      */
     public function testBadGame2(): void
     {
         $this->expectExceptionMessage(
-            "Invalid game: `abc` is not a number."
+            'Invalid game: `abc` is not a number.'
         );
 
         $this->bingo->processResource(
-            getcwd() . '/tests/fixtures/badGame2.txt'
+            getcwd().'/tests/fixtures/badGame2.txt'
         );
     }
 }
