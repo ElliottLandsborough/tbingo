@@ -23,4 +23,7 @@ jobs:
           command: php8.1 ./vendor/bin/phpunit
       - run:
           name: Execute
-          command: cat input.txt | php8.1 ./bin/app checkBoards
+          command: php8.1 ./bin/app checkBoards < tests/fixtures/input.txt
+      - run:
+          name: Compare command output with expected output
+          command: diff -u tests/fixtures/output.txt <(php8.1 ./bin/app checkBoards < tests/fixtures/input.txt)

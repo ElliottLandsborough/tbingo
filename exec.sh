@@ -9,4 +9,4 @@ fi
 
 cd "$(dirname "$0")"
 
-./bin/app checkBoards < input.txt
+./bin/app checkBoards < tests/fixtures/input.txt
