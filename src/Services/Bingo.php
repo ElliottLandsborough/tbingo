@@ -106,8 +106,8 @@ class Bingo
 
                 while ($length > 0
                        && (
-                           $line[$length - 1] === "\r"
-                           || $line[$length - 1] === "\n"
+                           $line[($length - 1)] === "\r"
+                           || $line[($length - 1)] === "\n"
                        )
                 ) {
                     $length--;
