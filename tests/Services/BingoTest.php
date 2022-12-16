@@ -7,6 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class BingoTest extends TestCase
 {
+    /**
+     * Instance of Bingo
+     *
+     * @var Bingo
+     */
     protected $bingo;
 
     // runs per test
