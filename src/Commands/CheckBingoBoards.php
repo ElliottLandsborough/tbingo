@@ -78,10 +78,10 @@ class CheckBingoBoards extends Command
         $table->render();
 
         if (count($winners) > 0) {
-            $output->writeln("");
+            $output->writeln('');
         }
 
-        $output->writeln("Finished.");
+        $output->writeln('Finished.');
 
         return Command::SUCCESS;
     }
