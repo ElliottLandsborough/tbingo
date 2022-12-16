@@ -195,7 +195,7 @@ class Bingo
             $diagonalRows[0][] = $board[$i][$i];
 
             // Diagonal row 2
-            $diagonalRows[1][] = $board[$i][4 - $i];
+            $diagonalRows[1][] = $board[$i][(4 - $i)];
         }
 
         return $diagonalRows;
