@@ -231,7 +231,7 @@ class Bingo
                         unset($winningRows[$rKey][$nKey]);
                     }
                     // If the winning row is empty.
-                    if (!count($winningRows[$rKey])) {
+                    if (count($winningRows[$rKey] === false)) {
                         // Return the position in the game it wins at.
                         return $gamePosition;
                     }
