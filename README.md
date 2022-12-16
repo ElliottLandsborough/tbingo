@@ -10,23 +10,27 @@ Part solution to https://adventofcode.com/2021/day/4
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/1b90d4c402fa4eacbb1d3b90a56a0f0c)](https://www.codacy.com/gh/ElliottLandsborough/tbingo/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ElliottLandsborough/tbingo&amp;utm_campaign=Badge_Grade)
 
 ## How to run
+
 ```bash
 composer install
 ./exec.sh
 ```
 
 ## How to test
+
 ```bash
 composer install
 ./vendor/bin/phpunit
 ```
 
 ## How to test with docker
+
 ```bash
 docker-compose up
 ```
 
-### Output
+## Output
+
 ```bash
 There were 3 wins and 0 losses.
 
@@ -41,7 +45,8 @@ The first win after 12 numbers:
 +---+----------------+
 ```
 
-# Input Specs
+## Input Specs
+
 - Any line with a comma separated numbers in it is considered a new game (e.g 1,2,3,4,5,6)
 - Any line with 5 numbers in it and no commas is considered a card row (e.g 1 2 3 4 5)
 - Cards have to be separated by at least one new line
