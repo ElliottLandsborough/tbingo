@@ -47,8 +47,6 @@ class CheckBingoBoards extends Command
             foreach ($errors as $error) {
                 $output->writeln("Cannot process input line: `$error`.");
             }
-
-            return;
         }
 
         $winners = $bingo->getWinners();
