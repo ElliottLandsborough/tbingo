@@ -14,19 +14,32 @@ class BingoTest extends TestCase
      */
     protected $bingo;
 
-    // runs per test
+    /**
+     * Runs at the beginning of a test
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->bingo = new Bingo();
     }
 
-    // runs after each test
+    /**
+     * Runs at the end of a test
+     *
+     * @return void
+     */
     public function tearDown(): void
     {
-        $this->bingo = null;
+        unset($this->bingo);
     }
 
-    public function testNothing()
+    /**
+     * Tests nothing
+     *
+     * @return void
+     */
+    public function testNothing(): void
     {
     }
 }
