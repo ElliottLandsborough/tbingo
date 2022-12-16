@@ -139,7 +139,9 @@ class Bingo
 
         foreach ($this->fileStream($resource) as $line) {
             // Skip newlines without any other content.
-            if (strlen($line) === 0 && str_contains($line, "\n") === true) {
+            if (strlen($line) === 0
+                && str_contains($line, "\n") === true
+            ) {
                 continue;
             }
 
@@ -149,22 +151,12 @@ class Bingo
                 continue;
             }
 
-            // Line is longer than 0 chars, line does not contain comma.
-            if (strlen($line) > 0) {
-                $boardRow = $this->processBoardRowLine($line);
-
-                // Did we get 5 numbers back?
-                if (count($boardRow) === 5) {
-                    $this->board[] = $boardRow;
-
-                    // Did we reach the board row limit of 5?
-                    if (count($this->board) === 5) {
-                        $this->extractResults();
-                    }
-
-                    // Skip to next line.
-                    continue;
-                }
+            // Line is longer than 0 chars and returned 5 results
+            if (strlen($line) > 0
+                && count($this->processBoardRowAndExtractResults($line)) === 5
+            ) {
+                // Skip to next line.
+                continue;
             }
 
             // Last condition, we don't know what this is.
@@ -175,6 +167,30 @@ class Bingo
                 return;
             }
         }
+    }
+
+    /**
+     * Process the board row and if it is 5 numbers long check if it has won
+     *
+     * @param string $line Line to be processed
+     *
+     * @return array<int>
+     */
+    public function processBoardRowAndExtractResults(string $line): array
+    {
+        $boardRow = $this->processBoardRowLine($line);
+
+        // Did we get 5 numbers back?
+        if (count($boardRow) === 5) {
+            $this->board[] = $boardRow;
+
+            // Did we reach the board row limit of 5?
+            if (count($this->board) === 5) {
+                $this->extractResults();
+            }
+        }
+
+        return $boardRow;
     }
 
     /**
