@@ -153,8 +153,8 @@ class Bingo
             if (strlen($line) > 0) {
                 $boardRow = $this->processBoardRowLine($line);
 
-                // Did we get some numbers back?
-                if (count($boardRow)) {
+                // Did we get 5 numbers back?
+                if (count($boardRow) === 5) {
                     $this->board[] = $boardRow;
 
                     // Did we reach the board row limit of 5?
