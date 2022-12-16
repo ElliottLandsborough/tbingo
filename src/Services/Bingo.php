@@ -5,28 +5,28 @@ namespace ElliottLandsborough\TerminalBingo\Services;
 class Bingo
 {
     /**
-     * Undocumented variable
+     * Undocumented variable.
      *
      * @var array<int, array<int, array<int>>
      */
     protected $winners = [];
 
     /**
-     * Undocumented variable
+     * Undocumented variable.
      *
      * @var array<int, array<int, array<int>>
      */
     protected $losers = [];
 
     /**
-     * Undocumented variable
+     * Undocumented variable.
      *
      * @var array<int>
      */
     protected $balls = [];
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return array<int>
      */
@@ -36,7 +36,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return array<int>
      */
@@ -46,7 +46,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return array<int>
      */
@@ -56,7 +56,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return ??
      */
@@ -68,9 +68,10 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param resource $resource
+     *
      * @return void
      */
     public function start($resource): void
@@ -143,9 +144,10 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param array $board
+     *
      * @return array
      */
     protected function generateWinningRows(array $board): array
@@ -158,9 +160,10 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param array $board
+     *
      * @return array
      */
     protected function generateVerticalRows(array $board): array
@@ -177,9 +180,10 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param array $board
+     *
      * @return array
      */
     protected function generateDiagonalRows(array $board): array
@@ -198,10 +202,11 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param array $board
-     * @return integer
+     *
+     * @return int
      */
     protected function checkForWinner(array $board): int
     {
