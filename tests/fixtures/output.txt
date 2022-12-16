@@ -1,3 +1,5 @@
+A game was played with 27 balls.
+
 There were 3 wins and 0 losses.
 
 The first win after 8 numbers:
@@ -9,3 +11,5 @@ The first win after 8 numbers:
 | G | 22 11 13  6  5 |
 | O |  2  0 12  3  7 |
 +---+----------------+
+
+Finished.

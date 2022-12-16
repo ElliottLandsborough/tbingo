@@ -34,6 +34,9 @@ class CheckBingoBoards extends Command
 
         $winCount = count($winners);
         $lossCount = count($losers);
+        $ballCount = count($balls);
+
+        $output->writeln("A game was played with 27 balls.\n");
 
         $output->writeln("There were $winCount wins and $lossCount losses.\n");
 
@@ -56,7 +59,7 @@ class CheckBingoBoards extends Command
                         $suffix = '</info>';
                     }
 
-                    $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
+                    $padded = str_pad((string) $number, 2, ' ', STR_PAD_LEFT);
 
                     $rowStrings[] = $prefix.$padded.$suffix;
                 }
@@ -73,6 +76,12 @@ class CheckBingoBoards extends Command
         $table = new Table($output);
         $table->setRows($rows);
         $table->render();
+
+        if (count($winners) > 0) {
+            $output->writeln("");
+        }
+
+        $output->writeln("Finished.");
 
         return Command::SUCCESS;
     }

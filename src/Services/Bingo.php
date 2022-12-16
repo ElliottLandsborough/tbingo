@@ -2,8 +2,6 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
-use Exception;
-
 class Bingo
 {
     /**
@@ -82,6 +80,10 @@ class Bingo
     {
         try {
             while (true) {
+                if (feof($resource)) {
+                    break;
+                }
+
                 $line = stream_get_line($resource, 1024, PHP_EOL);
 
                 if ($line === false) {
@@ -91,7 +93,10 @@ class Bingo
                 $length = strlen($line);
 
                 while ($length > 0
-                       && ($line[$length - 1] === "\r" || $line[$length - 1] === "\n")
+                       && (
+                           $line[$length - 1] === "\r"
+                           || $line[$length - 1] === "\n"
+                       )
                 ) {
                     $length--;
                 }
@@ -99,12 +104,6 @@ class Bingo
                 $line = substr($line, 0, $length);
 
                 yield trim($line);
-            }
-
-            if (!feof($resource)) {
-                $message = error_get_last()['message'];
-
-                throw new Exception($message);
             }
         } finally {
             fclose($resource);
