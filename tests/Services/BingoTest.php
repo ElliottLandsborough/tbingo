@@ -8,14 +8,14 @@ use PHPUnit\Framework\TestCase;
 class BingoTest extends TestCase
 {
     /**
-     * Instance of Bingo
+     * Instance of Bingo.
      *
      * @var Bingo
      */
     protected $bingo;
 
     /**
-     * Runs at the beginning of a test
+     * Runs at the beginning of a test.
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Runs at the end of a test
+     * Runs at the end of a test.
      *
      * @return void
      */
@@ -35,7 +35,7 @@ class BingoTest extends TestCase
     }
 
     /**
-     * Tests nothing
+     * Tests nothing.
      *
      * @return void
      */
