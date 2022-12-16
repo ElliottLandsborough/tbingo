@@ -44,7 +44,7 @@ docker-compose up
 ```bash
 There were 3 wins and 0 losses.
 
-The first win after 12 numbers:
+The first win after 8 numbers:
 
 +---+----------------+
 | B | 14 21 17 24  4 |

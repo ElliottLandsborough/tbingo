@@ -48,8 +48,13 @@ class CheckBingoBoards extends Command
                 $rowStrings = [];
 
                 foreach ($numbers as $number) {
-                    $prefix = in_array($number, $progress) === true ? '<info>' : '';
-                    $suffix = in_array($number, $progress) === true ? '</info>' : '';
+                    $prefix = '';
+                    $suffix = '';
+
+                    if (in_array($number, $progress) === true) {
+                        $prefix = '<info>';
+                        $suffix = '</info>';
+                    }
 
                     $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
 
