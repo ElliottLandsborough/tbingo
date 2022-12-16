@@ -51,7 +51,9 @@ class BingoTest extends TestCase
         $this->assertArrayHasKey(2, $winners[10]);
 
         $this->assertEquals(
-            [5, 4, 3, 2, 1],
+            [
+                5, 4, 3, 2, 1
+            ],
             $winners[10][2]
         );
     }
@@ -73,7 +75,13 @@ class BingoTest extends TestCase
         $this->assertArrayHasKey(0, $winners[10]);
 
         $this->assertEquals(
-            [1, 2, 3, 4, 5],
+            [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
             $winners[10][0]
         );
     }
