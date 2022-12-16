@@ -25,9 +25,22 @@ class CheckBingoBoards extends Command
         OutputInterface $output
     ): int {
         $bingo = new Bingo();
-
         $bingo->processResource(STDIN);
+        $this->generateOutput($output, $bingo);
 
+        return Command::SUCCESS;
+    }
+
+    /**
+     * Generated the terminal output
+     *
+     * @param OutputInterface $output Output interface
+     * @param Bingo           $bingo  Bingo instance
+     *
+     * @return void
+     */
+    protected function generateOutput(OutputInterface $output, Bingo $bingo): void
+    {
         $winners = $bingo->getWinners();
         $losers = $bingo->getLosers();
         $balls = $bingo->getBalls();
@@ -82,7 +95,5 @@ class CheckBingoBoards extends Command
         }
 
         $output->writeln('Finished.');
-
-        return Command::SUCCESS;
     }
 }
