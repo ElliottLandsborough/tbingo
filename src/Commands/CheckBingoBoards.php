@@ -59,7 +59,7 @@ class CheckBingoBoards extends Command
         $lossCount = count($losers);
         $ballCount = count($balls);
 
-        $output->writeln("A game was played with 27 balls.\n");
+        $output->writeln("A game was played with $ballCount balls.\n");
 
         $output->writeln("There were $winCount wins and $lossCount losses.\n");
 
