@@ -52,7 +52,7 @@ class BingoTest extends TestCase
 
         $this->assertEquals(
             [
-                5, 4, 3, 2, 1
+                5, 4, 3, 2, 1,
             ],
             $winners[10][2]
         );
@@ -80,7 +80,7 @@ class BingoTest extends TestCase
                 2,
                 3,
                 4,
-                5
+                5,
             ],
             $winners[10][0]
         );
