@@ -109,7 +109,9 @@ class Bingo
                 $parts = array_map('intval', preg_split('/\s+/', $line));
 
                 // If they are all digits and we have five of them.
-                if (ctype_digit(implode('', $parts)) && count($parts) === 5) {
+                if (ctype_digit(implode('', $parts)) === true
+                    && count($parts) === 5
+                ) {
                     $board[] = $parts;
 
                     // Did we reach the board row limit of 5?
