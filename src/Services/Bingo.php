@@ -91,9 +91,9 @@ class Bingo
                 $length = strlen($line);
 
                 while ($length > 0
-                       && ($line[$length - 1] === "\r" || $line[$length -1] === "\n")
+                       && ($line[$length - 1] === "\r" || $line[$length - 1] === "\n")
                 ) {
-                    --$length;
+                    $length--;
                 }
 
                 $line = substr($line, 0, $length);
@@ -103,6 +103,7 @@ class Bingo
 
             if (!feof($resource)) {
                 $message = error_get_last()['message'];
+
                 throw new Exception($message);
             }
         } finally {
@@ -111,7 +112,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param resource $resource Array of board numbers
      *
@@ -179,7 +180,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param string $line Line to be processed
      *
@@ -199,7 +200,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @param string $line Line to be processed
      *
