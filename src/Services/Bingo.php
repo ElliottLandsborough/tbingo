@@ -26,6 +26,20 @@ class Bingo
     protected $balls = [];
 
     /**
+     * Undocumented variable.
+     *
+     * @var array<int, string>
+     */
+    protected $errors = [];
+
+    /**
+     * Undocumented variable.
+     *
+     * @var array<int>
+     */
+    protected $board = [];
+
+    /**
      * Undocumented function.
      *
      * @return array<int>
@@ -60,25 +74,23 @@ class Bingo
      *
      * @return ??
      */
-    protected function stdinStream()
+    protected function stdinStream($resource)
     {
-        while ($line = fgets(STDIN)) {
+        while ($line = fgets($resource)) {
             yield $line;
         }
     }
 
     /**
-     * Undocumented function.
+     * Undocumented function
+     *
+     * @param resource $resource      Array of board numbers
      *
      * @return void
      */
-    public function start(): void
+    public function processResource($resource): void
     {
-        $board = [];
-        $lineNumber = 0;
-
-        foreach ($this->stdinStream() as $line) {
-            $lineNumber++;
+        foreach ($this->stdinStream($resource) as $line) {
             $line = trim($line);
 
             // Skip newlines without any other content.
@@ -88,59 +100,97 @@ class Bingo
 
             // Was a ballset defined?
             if (str_contains($line, ',') === true) {
-                $exploded = explode(',', $line);
-
-                $balls = [];
-
-                foreach ($exploded as $number) {
-                    $balls[] = (int) trim($number);
-                }
-
-                $this->balls = $balls;
-
+                $this->balls = $this->processBallLine($line);
                 continue;
             }
 
             // Line is longer than 0 chars, line does not contain comma.
             if (strlen($line) > 0) {
-                // Split line by multiple spaces, run through intval.
-                $parts = array_map('intval', preg_split('/\s+/', $line));
+                $boardRow = $this->processBoardRowLine($line);
+                $this->board[] = $boardRow;
 
-                // If they are all digits and we have five of them.
-                if (ctype_digit(implode('', $parts)) === true
-                    && count($parts) === 5
-                ) {
-                    $board[] = $parts;
+                // Did we reach the board row limit of 5?
+                if (count($this->board) === 5) {
+                    $this->extractResults();
+                }
 
-                    // Did we reach the board row limit of 5?
-                    if (count($board) === 5) {
-                        // Process board.
-                        $winPosition = $this->checkForWinner($board);
-
-                        if ($winPosition > 0) {
-                            $this->winners[$winPosition] = $board;
-                        }
-
-                        if ($winPosition === 0) {
-                            $this->losers[$winPosition] = $board;
-                        }
-
-                        // Reset board and continue.
-                        $board = [];
-                    }
-
+                // Did we get some numbers back?
+                if (count($boardRow)) {
+                    // Skip to next line
                     continue;
                 }
             }
 
             // Last condition, we don't know what this is.
             if (strlen($line) > 0) {
-                fwrite(STDOUT, "Cannot process L$lineNumber of input: '$line'");
+                $this->errors[] = "Cannot process input line: `$line`.";
             }
         }
+    }
 
-        // Sort winners by key.
-        ksort($this->winners);
+    /**
+     * Works out who has won and who has lost.
+     *
+     * @return void
+     */
+    public function extractResults(): void
+    {
+        // Process board.
+        $winPosition = $this->checkForWinner($this->board);
+
+        if ($winPosition > 0) {
+            $this->winners[$winPosition] = $this->board;
+            ksort($this->winners);
+        }
+
+        if ($winPosition === 0) {
+            $this->losers[$winPosition] = $this->board;
+        }
+
+        // Reset board and continue.
+        $this->board = [];
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $line Line to be processed
+     *
+     * @return array<int>
+     */
+    public function processBallLine(string $line): array
+    {
+        $balls = [];
+
+        $exploded = explode(',', $line);
+
+        foreach ($exploded as $number) {
+            $balls[] = (int) trim($number);
+        }
+
+        return $balls;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $line Line to be processed
+     *
+     * @return array<int>
+     */
+    public function processBoardRowLine(string $line): array
+    {
+        // Split line by multiple spaces, run through intval.
+        $parts = array_map('intval', preg_split('/\s+/', $line));
+
+        // If they are all digits and we have five of them.
+        if (ctype_digit(implode('', $parts)) === true
+            && count($parts) === 5
+        ) {
+            return $parts;
+        }
+
+        return [];
     }
 
     /**
@@ -148,7 +198,7 @@ class Bingo
      *
      * @param array $board A bingo board
      *
-     * @return array
+     * @return array<int, array<int, array<>>>
      */
     protected function generateWinningRows(array $board): array
     {

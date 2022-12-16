@@ -26,7 +26,7 @@ class CheckBingoBoards extends Command
     ): int {
         $bingo = new Bingo();
 
-        $bingo->start(STDIN);
+        $bingo->processResource(STDIN);
 
         $winners = $bingo->getWinners();
         $losers = $bingo->getLosers();
