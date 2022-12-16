@@ -14,7 +14,6 @@ class BingoTest extends TestCase
      */
     protected $bingo;
 
-
     /**
      * Runs at the beginning of a test.
      *
