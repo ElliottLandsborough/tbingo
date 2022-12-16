@@ -25,7 +25,7 @@ class CheckBingoBoards extends Command
         OutputInterface $output
     ): int {
         $bingo = new Bingo();
-        $bingo->processResource(STDIN);
+        $bingo->processResource('php://stdin');
         $this->generateOutput($output, $bingo);
 
         return Command::SUCCESS;
@@ -41,6 +41,16 @@ class CheckBingoBoards extends Command
      */
     protected function generateOutput(OutputInterface $output, Bingo $bingo): void
     {
+        $errors = $bingo->getErrors();
+
+        if (count($errors)) {
+            foreach ($errors as $error) {
+                $output->writeln("Cannot process input line: `$error`.");
+            }
+
+            return;
+        }
+
         $winners = $bingo->getWinners();
         $losers = $bingo->getLosers();
         $balls = $bingo->getBalls();

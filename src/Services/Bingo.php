@@ -72,6 +72,16 @@ class Bingo
     }
 
     /**
+     * Undocumented function.
+     *
+     * @return array<int, string>
+     */
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    /**
      * Stream file line by line.
      *
      * @param resource $resource File resource
@@ -142,15 +152,16 @@ class Bingo
             // Line is longer than 0 chars, line does not contain comma.
             if (strlen($line) > 0) {
                 $boardRow = $this->processBoardRowLine($line);
-                $this->board[] = $boardRow;
-
-                // Did we reach the board row limit of 5?
-                if (count($this->board) === 5) {
-                    $this->extractResults();
-                }
 
                 // Did we get some numbers back?
                 if (count($boardRow)) {
+                    $this->board[] = $boardRow;
+
+                    // Did we reach the board row limit of 5?
+                    if (count($this->board) === 5) {
+                        $this->extractResults();
+                    }
+
                     // Skip to next line.
                     continue;
                 }
@@ -158,7 +169,10 @@ class Bingo
 
             // Last condition, we don't know what this is.
             if (strlen($line) > 0) {
-                $this->errors[] = "Cannot process input line: `$line`.";
+                $this->errors[] = $line;
+
+                // Stop at the first error
+                return;
             }
         }
     }
@@ -199,8 +213,24 @@ class Bingo
 
         $exploded = explode(',', $line);
 
-        foreach ($exploded as $number) {
-            $balls[] = (int) trim($number);
+        foreach ($exploded as $text) {
+            $potentialNumber = trim($text);
+
+            // Only accept numeric chars.
+            if (ctype_digit($potentialNumber) === false) {
+                $message = "Invalid game: `$potentialNumber` is not a number.";
+                throw new Exception($message);
+            }
+
+            $number = (int) $potentialNumber;
+
+            if ($number > 75) {
+                $message = "Invalid game: Only 1-75 are ok. `$number` is too high.";
+                throw new Exception($message);
+            }
+
+
+            $balls[] = (int) $number;
         }
 
         return $balls;
@@ -216,12 +246,14 @@ class Bingo
     public function processBoardRowLine(string $line): array
     {
         // Split line by multiple spaces, run through intval.
-        $parts = array_map('intval', preg_split('/\s+/', $line));
+        $exploded = preg_split('/\s+/', $line);
 
         // If they are all digits and we have five of them.
-        if (ctype_digit(implode('', $parts)) === true
-            && count($parts) === 5
+        if (ctype_digit(implode('', $exploded)) === true
+            && count($exploded) === 5
         ) {
+            $parts = array_map('intval', $exploded);
+
             return $parts;
         }
 
