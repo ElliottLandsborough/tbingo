@@ -9,14 +9,14 @@ class Bingo
     /**
      * Undocumented variable.
      *
-     * @var array<int, array<int, array<int>>
+     * @var array<int, array<int, array<int>>>
      */
     protected $winners = [];
 
     /**
      * Undocumented variable.
      *
-     * @var array<int, array<int, array<int>>
+     * @var array<int, array<int, array<int>>>
      */
     protected $losers = [];
 
@@ -37,14 +37,14 @@ class Bingo
     /**
      * Undocumented variable.
      *
-     * @var array<int>
+     * @var array<int, array<int>>
      */
     protected $board = [];
 
     /**
      * Undocumented function.
      *
-     * @return array<int>
+     * @return array<int, array<int, array<int>>>
      */
     public function getWinners(): array
     {
@@ -54,7 +54,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @return array<int>
+     * @return array<int, array<int, array<int>>>
      */
     public function getLosers(): array
     {
@@ -97,7 +97,7 @@ class Bingo
 
                 $line = substr($line, 0, $length);
 
-                yield $line;
+                yield trim($line);
             }
 
             if (!feof($resource)) {
@@ -119,8 +119,6 @@ class Bingo
     public function processResource($resource): void
     {
         foreach ($this->stdinStream($resource) as $line) {
-            $line = trim($line);
-
             // Skip newlines without any other content.
             if (strlen($line) === 0 && str_contains($line, "\n") === true) {
                 continue;
@@ -224,9 +222,9 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board A bingo board
+     * @param array<int, array<int>> $board A bingo board
      *
-     * @return array<int, array<int, array<>>>
+     * @return array<int, array<int>>
      */
     protected function generateWinningRows(array $board): array
     {
@@ -240,9 +238,9 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board A bingo board
+     * @param array<int, array<int>> $board A bingo board
      *
-     * @return array
+     * @return array<int, array<int>>
      */
     protected function generateVerticalRows(array $board): array
     {
@@ -260,9 +258,9 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board A bingo board
+     * @param array<int, array<int>> $board A bingo board
      *
-     * @return array
+     * @return array<int, array<int>>
      */
     protected function generateDiagonalRows(array $board): array
     {
@@ -282,7 +280,7 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param array $board A bingo board
+     * @param array<int, array<int>> $board A bingo board
      *
      * @return int
      */
