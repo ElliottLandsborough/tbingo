@@ -74,7 +74,7 @@ class Bingo
      *
      * @return void
      */
-    public function start($resource): void
+    public function start(): void
     {
         $board = [];
         $lineNumber = 0;
