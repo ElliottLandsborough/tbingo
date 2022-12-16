@@ -77,7 +77,6 @@ class Bingo
     {
         $board = [];
         $lineNumber = 0;
-        $this->balls = [];
 
         foreach ($this->stdinStream() as $line) {
             $lineNumber++;
@@ -92,17 +91,21 @@ class Bingo
             if (str_contains($line, ',')) {
                 $exploded = explode(',', $line);
 
+                $balls = [];
+
                 foreach ($exploded as $number) {
-                    $this->balls[] = intval(trim($number), 10);
+                    $balls[] = intval(trim($number), 10);
                 }
+
+                $this->balls = $balls;
 
                 continue;
             }
 
             // Line is longer than 0 chars, line does not contain comma
             if (strlen($line) > 0) {
-                // Split line by multiple spaces
-                $parts = preg_split('/\s+/', $line);
+                // Split line by multiple spaces, run through intval
+                $parts = array_map('intval', preg_split('/\s+/', $line));
 
                 // If they are all digits and we have five of them
                 if (ctype_digit(implode('', $parts)) && count($parts) === 5) {
