@@ -21,21 +21,21 @@ class Bingo
     protected $losers = [];
 
     /**
-     * The bingo game balls in order drawn
+     * The bingo game balls in order drawn.
      *
      * @var array<int>
      */
     protected $balls = [];
 
     /**
-     * Any board errors
+     * Any board errors.
      *
      * @var array<int, string>
      */
     protected $errors = [];
 
     /**
-     * The current board being processed
+     * The current board being processed.
      *
      * @var array<int, array<int>>
      */
