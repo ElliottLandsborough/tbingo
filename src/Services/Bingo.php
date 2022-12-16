@@ -158,7 +158,7 @@ class Bingo
         $vertical = $this->generateVerticalRows($board);
         $diagonal = $this->generateDiagonalRows($board);
 
-        return ($horizontal + $vertical + $diagonal);
+        return array_merge($horizontal, $vertical, $diagonal);
     }
 
     /**
