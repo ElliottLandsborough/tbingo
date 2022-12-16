@@ -9,6 +9,14 @@ Part solution to https://adventofcode.com/2021/day/4
 [![Code Style](https://github.styleci.io/repos/578703772/shield?style=flat&branch=main)](https://github.styleci.io/repos/578703772)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/1b90d4c402fa4eacbb1d3b90a56a0f0c)](https://www.codacy.com/gh/ElliottLandsborough/tbingo/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ElliottLandsborough/tbingo&amp;utm_campaign=Badge_Grade)
 
+## todo:
+
+- Unit tests
+- Deal with STDOUT/IN and yield
+- Make sure structured okay
+- Double check code coverage
+- Shorten long functions
+
 ## How to run
 
 ```bash
