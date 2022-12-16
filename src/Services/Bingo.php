@@ -2,6 +2,8 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
+use Exception;
+
 class Bingo
 {
     /**
@@ -72,19 +74,45 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @return ??
+     * @param resource $resource File resource
+     *
+     * @return \Generator
      */
-    protected function stdinStream($resource)
+    protected function stdinStream($resource): \Generator
     {
-        while ($line = fgets($resource)) {
-            yield $line;
+        try {
+            while (true) {
+                $line = stream_get_line($resource, 1024, PHP_EOL);
+
+                if ($line === false) {
+                    break;
+                }
+
+                $length = strlen($line);
+
+                while ($length > 0
+                    && ($line[$length - 1] === "\r" || $line[$length -1] === "\n")) {
+                    --$length;
+                }
+
+                $line = substr($line, 0, $length);
+
+                yield $line;
+            }
+
+            if (!feof($resource)) {
+                $message = error_get_last()['message'];
+                throw new Exception($message);
+            }
+        } finally {
+            fclose($resource);
         }
     }
 
     /**
      * Undocumented function
      *
-     * @param resource $resource      Array of board numbers
+     * @param resource $resource Array of board numbers
      *
      * @return void
      */
@@ -116,7 +144,7 @@ class Bingo
 
                 // Did we get some numbers back?
                 if (count($boardRow)) {
-                    // Skip to next line
+                    // Skip to next line.
                     continue;
                 }
             }
