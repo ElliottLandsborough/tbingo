@@ -42,18 +42,18 @@ class CheckBingoBoards extends Command
         foreach ($winners as $position => $board) {
             $output->writeln("The first win after $position numbers:\n");
             $decoration = 'BINGO';
-            $relevantBalls = array_slice($balls, 0, $position);
+            $progress = array_slice($balls, 0, $position);
 
             foreach ($board as $key => $numbers) {
                 $rowStrings = [];
 
                 foreach ($numbers as $number) {
-                    $p = in_array($number, $relevantBalls) === true ? '<info>' : '';
-                    $s = in_array($number, $relevantBalls) === true ? '</info>' : '';
+                    $prefix = in_array($number, $progress) === true ? '<info>' : '';
+                    $suffix = in_array($number, $progress) === true ? '</info>' : '';
 
                     $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
 
-                    $rowStrings[] = $p.$padded.$s;
+                    $rowStrings[] = $prefix.$padded.$suffix;
                 }
 
                 $rows[] = [
