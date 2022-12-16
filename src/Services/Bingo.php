@@ -92,7 +92,7 @@ class Bingo
     {
         try {
             while (true) {
-                if (feof($resource)) {
+                if (feof($resource) === true) {
                     break;
                 }
 
