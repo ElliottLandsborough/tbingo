@@ -95,7 +95,7 @@ class Bingo
                 $balls = [];
 
                 foreach ($exploded as $number) {
-                    $balls[] = intval(trim($number), 10);
+                    $balls[] = (int) trim($number);
                 }
 
                 $this->balls = $balls;

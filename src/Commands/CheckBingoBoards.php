@@ -48,12 +48,12 @@ class CheckBingoBoards extends Command
                 $rowStrings = [];
 
                 foreach ($numbers as $number) {
-                    $prefix = in_array($number, $relevantBalls) ? '<info>' : '';
-                    $suffix = in_array($number, $relevantBalls) ? '</info>' : '';
+                    $p = in_array($number, $relevantBalls) === true ? '<info>' : '';
+                    $s = in_array($number, $relevantBalls) === true ? '</info>' : '';
 
                     $padded = str_pad($number, 2, ' ', STR_PAD_LEFT);
 
-                    $rowStrings[] = $prefix.$padded.$suffix;
+                    $rowStrings[] = $p . $padded . $s;
                 }
 
                 $rows[] = [$decoration[$key], implode(' ', $rowStrings)];
