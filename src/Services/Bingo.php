@@ -70,8 +70,6 @@ class Bingo
     /**
      * Undocumented function.
      *
-     * @param resource $resource
-     *
      * @return void
      */
     public function start(): void
@@ -84,12 +82,12 @@ class Bingo
             $line = trim($line);
 
             // Skip newlines without any other content.
-            if (strlen($line) === 0 && str_contains($line, "\n")) {
+            if (strlen($line) === 0 && str_contains($line, "\n") === true) {
                 continue;
             }
 
             // Was a ballset defined?
-            if (str_contains($line, ',')) {
+            if (str_contains($line, ',') === true) {
                 $exploded = explode(',', $line);
 
                 $balls = [];
@@ -136,7 +134,7 @@ class Bingo
             }
 
             // Last condition, we don't know what this is.
-            if (strlen($line)) {
+            if (strlen($line) > 0) {
                 fwrite(STDOUT, "Cannot process L$lineNumber of input: '$line'");
             }
         }
@@ -230,6 +228,7 @@ class Bingo
                         // Remove it from the winning row.
                         unset($winningRows[$rKey][$nKey]);
                     }
+
                     // If the winning row is empty.
                     if (count($winningRows[$rKey]) === 0) {
                         // Return the position in the game it wins at.
