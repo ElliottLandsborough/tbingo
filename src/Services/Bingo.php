@@ -158,7 +158,7 @@ class Bingo
         $vertical = $this->generateVerticalRows($board);
         $diagonal = $this->generateDiagonalRows($board);
 
-        return $horizontal + $vertical + $diagonal;
+        return ($horizontal + $vertical + $diagonal);
     }
 
     /**
@@ -231,7 +231,7 @@ class Bingo
                         unset($winningRows[$rKey][$nKey]);
                     }
                     // If the winning row is empty.
-                    if (count($winningRows[$rKey] === false)) {
+                    if (count($winningRows[$rKey]) === 0) {
                         // Return the position in the game it wins at.
                         return $gamePosition;
                     }
