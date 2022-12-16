@@ -171,7 +171,7 @@ class Bingo
             if (strlen($line) > 0) {
                 $this->errors[] = $line;
 
-                // Stop at the first error
+                // Stop at the first error.
                 return;
             }
         }
