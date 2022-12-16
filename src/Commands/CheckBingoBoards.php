@@ -56,7 +56,10 @@ class CheckBingoBoards extends Command
                     $rowStrings[] = $p . $padded . $s;
                 }
 
-                $rows[] = [$decoration[$key], implode(' ', $rowStrings)];
+                $rows[] = [
+                    $decoration[$key],
+                    implode(' ', $rowStrings)
+                ];
             }
 
             break;
