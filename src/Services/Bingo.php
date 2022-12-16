@@ -83,7 +83,7 @@ class Bingo
             $lineNumber++;
             $line = trim($line);
 
-            // Skip newlines without any other content
+            // Skip newlines without any other content.
             if (strlen($line) === 0 && str_contains($line, "\n")) {
                 continue;
             }
@@ -103,18 +103,18 @@ class Bingo
                 continue;
             }
 
-            // Line is longer than 0 chars, line does not contain comma
+            // Line is longer than 0 chars, line does not contain comma.
             if (strlen($line) > 0) {
-                // Split line by multiple spaces, run through intval
+                // Split line by multiple spaces, run through intval.
                 $parts = array_map('intval', preg_split('/\s+/', $line));
 
-                // If they are all digits and we have five of them
+                // If they are all digits and we have five of them.
                 if (ctype_digit(implode('', $parts)) && count($parts) === 5) {
                     $board[] = $parts;
 
                     // Did we reach the board row limit of 5?
                     if (count($board) === 5) {
-                        // Process board
+                        // Process board.
                         $winPosition = $this->checkForWinner($board);
 
                         if ($winPosition > 0) {
@@ -125,7 +125,7 @@ class Bingo
                             $this->losers[$winPosition] = $board;
                         }
 
-                        // Reset board and continue
+                        // Reset board and continue.
                         $board = [];
                     }
 
@@ -133,13 +133,13 @@ class Bingo
                 }
             }
 
-            // Last condition, we don't know what this is
+            // Last condition, we don't know what this is.
             if (strlen($line)) {
                 fwrite(STDOUT, "Cannot process L$lineNumber of input: '$line'");
             }
         }
 
-        // Sort winners by key
+        // Sort winners by key.
         ksort($this->winners);
     }
 
@@ -191,10 +191,10 @@ class Bingo
         $diagonalRows = [];
 
         for ($i = 0; $i <= 4; $i++) {
-            // Diagonal row 1
+            // Diagonal row 1.
             $diagonalRows[0][] = $board[$i][$i];
 
-            // Diagonal row 2
+            // Diagonal row 2.
             $diagonalRows[1][] = $board[$i][(4 - $i)];
         }
 
@@ -214,22 +214,23 @@ class Bingo
 
         $gamePosition = 0;
 
-        // Each game ball, in order...
+        // Each game ball, in order.
         foreach ($this->balls as $bNumber) {
-            // Increment game position
+            // Increment game position.
             $gamePosition++;
 
-            // Each row that counts as a winner...
+            // Each row that counts as a winner.
             foreach ($winningRows as $rKey => $row) {
-                // Each number from this row...
+                // Each number from this row.
                 foreach ($row as $nKey => $rNumber) {
-                    // If game ball is the same as row number
+                    // If game ball is the same as row number.
                     if ($bNumber === $rNumber) {
-                        // Remove it from the winning row
+                        // Remove it from the winning row.
                         unset($winningRows[$rKey][$nKey]);
                     }
-                    // If the winning row is empty
+                    // If the winning row is empty.
                     if (!count($winningRows[$rKey])) {
+                        // Return the position in the game it wins at.
                         return $gamePosition;
                     }
                 }
