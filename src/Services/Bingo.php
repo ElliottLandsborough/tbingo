@@ -170,7 +170,7 @@ class Bingo
     }
 
     /**
-     * Process the board row and if it is 5 numbers long check if it has won
+     * Process the board row and if it is 5 numbers long check if it has won.
      *
      * @param string $line Line to be processed
      *
