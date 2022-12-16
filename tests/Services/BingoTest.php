@@ -14,6 +14,7 @@ class BingoTest extends TestCase
      */
     protected $bingo;
 
+
     /**
      * Runs at the beginning of a test.
      *
@@ -76,11 +77,7 @@ class BingoTest extends TestCase
 
         $this->assertEquals(
             [
-                1,
-                2,
-                3,
-                4,
-                5,
+                1, 2, 3, 4, 5,
             ],
             $winners[10][0]
         );
