@@ -7,42 +7,42 @@ use Exception;
 class Bingo
 {
     /**
-     * Undocumented variable.
+     * The winning bingo boards.
      *
      * @var array<int, array<int, array<int>>>
      */
     protected $winners = [];
 
     /**
-     * Undocumented variable.
+     * The losing bingo boards.
      *
      * @var array<int, array<int, array<int>>>
      */
     protected $losers = [];
 
     /**
-     * Undocumented variable.
+     * The bingo game balls in order drawn
      *
      * @var array<int>
      */
     protected $balls = [];
 
     /**
-     * Undocumented variable.
+     * Any board errors
      *
      * @var array<int, string>
      */
     protected $errors = [];
 
     /**
-     * Undocumented variable.
+     * The current board being processed
      *
      * @var array<int, array<int>>
      */
     protected $board = [];
 
     /**
-     * Undocumented function.
+     * Gets the winners.
      *
      * @return array<int, array<int, array<int>>>
      */
@@ -52,7 +52,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Gets the losers.
      *
      * @return array<int, array<int, array<int>>>
      */
@@ -62,7 +62,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Gets the drawn balls.
      *
      * @return array<int>
      */
@@ -72,7 +72,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Gets the errors.
      *
      * @return array<int, string>
      */
