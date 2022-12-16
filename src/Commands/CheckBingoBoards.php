@@ -43,7 +43,7 @@ class CheckBingoBoards extends Command
     {
         $errors = $bingo->getErrors();
 
-        if (count($errors)) {
+        if (count($errors) > 0) {
             foreach ($errors as $error) {
                 $output->writeln("Cannot process input line: `$error`.");
             }
