@@ -69,7 +69,6 @@ class CheckBingoBoards extends Command
 
             break;
         }
-        // end foreach
 
         $table = new Table($output);
         $table->setRows($rows);
@@ -77,5 +76,4 @@ class CheckBingoBoards extends Command
 
         return Command::SUCCESS;
     }
-    // end execute()
 }
