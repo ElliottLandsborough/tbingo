@@ -72,7 +72,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Parse stdin line by line
      *
      * @param resource $resource File resource
      *
@@ -112,9 +112,9 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Process a resource line by line
      *
-     * @param resource $resource Array of board numbers
+     * @param resource $resource The input, multiline text
      *
      * @return void
      */
@@ -180,7 +180,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Process ball line
      *
      * @param string $line Line to be processed
      *
@@ -200,7 +200,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Process row of board
      *
      * @param string $line Line to be processed
      *
@@ -222,7 +222,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Generate an array of winning rows
      *
      * @param array<int, array<int>> $board A bingo board
      *
@@ -238,7 +238,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Generate vertical winning rows
      *
      * @param array<int, array<int>> $board A bingo board
      *
@@ -258,7 +258,7 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Generate diagonal winning rows
      *
      * @param array<int, array<int>> $board A bingo board
      *
@@ -280,7 +280,10 @@ class Bingo
     }
 
     /**
-     * Undocumented function.
+     * Check for a winning row
+     *
+     * Returns the point in the game where this board won.
+     * Returning zero means this board never won.
      *
      * @param array<int, array<int>> $board A bingo board
      *
