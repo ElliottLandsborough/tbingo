@@ -147,18 +147,15 @@ class Bingo
                 continue;
             }
 
-            // Line is longer than 0 chars and returned 5 results.
-            if (strlen($line) > 0
-                && count($this->processBoardRowAndExtractResults($line)) === 5
+            // Line returned 5 results.
+            if (count($this->processBoardRowAndExtractResults($line)) === 5
             ) {
                 // Skip to next line.
                 continue;
             }
 
-            // Last condition, we don't know what this is.
-            if (strlen($line) > 0) {
-                $this->errors[] = $line;
-            }
+            // Unable to process line, add to errors.
+            $this->errors[] = $line;
         }
     }
 
