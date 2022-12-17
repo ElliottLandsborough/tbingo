@@ -4,9 +4,6 @@ namespace ElliottLandsborough\PhpTerminalApp\Tests\Services;
 
 use ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Console\Formatter\NullOutputFormatter;
-use Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -49,7 +46,7 @@ class ParseCronTest extends TestCase
     }
 
     /**
-     * Executes full command
+     * Executes full command.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
      * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
@@ -73,7 +70,7 @@ class ParseCronTest extends TestCase
     }
 
     /**
-     * Try bad path
+     * Try bad path.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
      * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
