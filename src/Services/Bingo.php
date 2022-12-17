@@ -148,8 +148,7 @@ class Bingo
             }
 
             // Line returned 5 results.
-            if (count($this->processBoardRowAndExtractResults($line)) === 5
-            ) {
+            if (count($this->processBoardRowAndExtractResults($line)) === 5) {
                 // Skip to next line.
                 continue;
             }
