@@ -132,13 +132,7 @@ class Bingo
      */
     public function processResource(string $path): void
     {
-        $resource = fopen($path, 'r');
-
-        if ($resource === false) {
-            throw new Exception("Could not open $path.");
-        }
-
-        foreach ($this->fileStream($resource) as $line) {
+        foreach ($this->fileStream(fopen($path, 'r')) as $line) {
             // Skip newlines without any other content.
             if (strlen($line) === 0
                 && str_contains($line, "\n") === true
