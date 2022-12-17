@@ -20,14 +20,14 @@ jobs:
           command: php8.1 /usr/local/bin/composer install
       - run:
           name: PHPUnit
-          command: XDEBUG_MODE=coverage php8.1 ./vendor/bin/phpunit --coverage-clover coverage.xml
+          command: XDEBUG_MODE=coverage php8.1 ./vendor/bin/phpunit --coverage-clover clover.xml
       - run:
           name: Code coverage
           command: |
             curl -Os https://uploader.codecov.io/latest/linux/codecov
             chmod +x codecov
             ./codecov
-            bash <(curl -Ls https://coverage.codacy.com/get.sh) -r coverage.xml
+            bash <(curl -Ls https://coverage.codacy.com/get.sh)
       - run:
           name: Execute
           command: php8.1 ./bin/app checkBoards < tests/fixtures/input.txt

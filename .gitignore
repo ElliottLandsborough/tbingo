@@ -1,4 +1,4 @@
 vendor/
 .phpunit*
 codecov
-coverage.xml
+clover.xml
