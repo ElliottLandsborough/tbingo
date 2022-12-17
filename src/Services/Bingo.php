@@ -21,6 +21,13 @@ class Bingo
     protected $losers = [];
 
     /**
+     * The winning row.
+     *
+     * @var array<int, array<int>>
+     */
+    protected $winningRows = [];
+
+    /**
      * The bingo game balls in order drawn.
      *
      * @var array<int>
@@ -59,6 +66,16 @@ class Bingo
     public function getLosers(): array
     {
         return $this->losers;
+    }
+
+    /**
+     * Gets the winning rows.
+     *
+     * @return array<int, array<int>>
+     */
+    public function getWinningRows(): array
+    {
+        return $this->winningRows;
     }
 
     /**
@@ -347,9 +364,11 @@ class Bingo
      */
     protected function checkForWinner(array $board): int
     {
-        $winningRows = $this->generateWinningRows($board);
+        $potentialWins = $this->generateWinningRows($board);
 
         $gamePosition = 0;
+
+        $winningNumbers = [];
 
         // Each game ball, in order.
         foreach ($this->balls as $bNumber) {
@@ -357,17 +376,23 @@ class Bingo
             $gamePosition++;
 
             // Each row that counts as a winner.
-            foreach ($winningRows as $rKey => $row) {
+            foreach ($potentialWins as $rKey => $row) {
                 // Each number from this row.
                 foreach ($row as $nKey => $rNumber) {
                     // If game ball is the same as row number.
                     if ($bNumber === $rNumber) {
-                        // Remove it from the winning row.
-                        unset($winningRows[$rKey][$nKey]);
+                        // Add it to the winning rows array
+                        $winningNumbers[$rKey][$nKey] = $potentialWins[$rKey][$nKey];
+
+                        // Remove it from the current row.
+                        unset($potentialWins[$rKey][$nKey]);
                     }
 
                     // If the winning row is empty.
-                    if (count($winningRows[$rKey]) === 0) {
+                    if (count($potentialWins[$rKey]) === 0) {
+                        $winningRow = $this->getWinningRowFromNumbers($winningNumbers);
+                        $this->winningRows[$gamePosition] = $winningRow;
+
                         // Return the position in the game it wins at.
                         return $gamePosition;
                     }
@@ -376,5 +401,23 @@ class Bingo
         }
 
         return 0;
+    }
+
+    /**
+     * Returns the winning row if there was one
+     *
+     * @param array<int, array<int>> $winningNumbers Arrays of winning numbers
+     *
+     * @return array<int>
+     */
+    public function getWinningRowFromNumbers(array $winningNumbers): array
+    {
+        foreach ($winningNumbers as $numbers) {
+            if (count($numbers) === 5) {
+                return $numbers;
+            }
+        }
+
+        return [];
     }
 }

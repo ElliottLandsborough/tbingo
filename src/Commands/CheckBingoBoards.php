@@ -76,8 +76,17 @@ class CheckBingoBoards extends Command
                     $suffix = '';
 
                     if (in_array($number, $progress) === true) {
-                        $prefix = '<info>';
-                        $suffix = '</info>';
+                        $prefix = '<comment>';
+                        $suffix = '</comment>';
+
+                        $winningRows = $bingo->getWinningRows();
+
+                        $winningRow = $winningRows[$position];
+
+                        if (in_array($number, $winningRow)) {
+                            $prefix = '<info>';
+                            $suffix = '</info>';
+                        }
                     }
 
                     $padded = str_pad((string) $number, 2, ' ', STR_PAD_LEFT);
