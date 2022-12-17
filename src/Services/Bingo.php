@@ -179,9 +179,6 @@ class Bingo
             // Last condition, we don't know what this is.
             if (strlen($line) > 0) {
                 $this->errors[] = $line;
-
-                // Stop at the first error.
-                return;
             }
         }
     }

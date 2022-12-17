@@ -89,31 +89,38 @@ EOD;
         $this->assertEquals($expected, $output);
     }
 
-    /*
-    public function testCommand()
+    /**
+     * Tests a bad input
+     *
+     * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
+     *
+     * @return void
+     */
+    public function testBadBoard(): void
     {
-        $this->commandTester->execute(
-            [
-                'cron_string' => '30 0,1,2,3 1-2 2 3-4 /path/executable --argument',
-            ]
+        $this->bingo->processResource(
+            getcwd().'/tests/fixtures/badBoard1.txt'
         );
 
-        $output = trim($this->commandTester->getDisplay());
+        $generateOutput = self::getMethod('generateOutput');
+        $consoleOutput = new CheckBingoBoards();
 
-        $expected = <<<'EOD'
-+--------------+-----------------------------+
-| Minute       | 0 30                        |
-| Hour         | 0 1 2 3                     |
-| Day of month | 1 2                         |
-| Month        | 2                           |
-| Day of week  | 3 4                         |
-| Command      | /path/executable --argument |
-+--------------+-----------------------------+
-EOD;
+        ob_start();
 
-        $this->assertEquals($output, $expected);
+        $generateOutput->invokeArgs(
+            $consoleOutput,
+            [new ConsoleOutput(), $this->bingo]
+        );
+
+        $haystack = (string) ob_get_contents();
+
+        ob_end_clean();
+
+        $needle = "Cannot process input line: `0  0 ZZ  0  0`.\n";
+
+        $this->assertStringContainsString($needle, $haystack);
     }
-    */
 }
 
 // Hacky interface implementation for testing.
