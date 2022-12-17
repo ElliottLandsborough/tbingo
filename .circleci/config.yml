@@ -20,7 +20,7 @@ jobs:
           command: php8.1 /usr/local/bin/composer install
       - run:
           name: PHPUnit
-          command: php8.1 ./vendor/bin/phpunit --coverage-clover coverage.xml
+          command: XDEBUG_MODE=coverage php8.1 ./vendor/bin/phpunit --coverage-clover coverage.xml
       - run:
           name: Codecov
           command: |

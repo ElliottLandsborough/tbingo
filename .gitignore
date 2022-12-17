@@ -1,3 +1,4 @@
 vendor/
 .phpunit*
 codecov
+coverage.xml
