@@ -49,7 +49,7 @@ The first win after 8 numbers:
 ## Input Specs
 
 ```
- - Any line with a comma separated numbers in it is considered a new game (e.g 1,2,3,4,5,6)
+ - Any line with comma separated numbers in it is considered a new game (e.g 1,2,3,4,5,6)
  - Any line with 5 numbers in it and no commas is considered a card row (e.g 1 2 3 4 5)
  - Cards have to be separated by at least one new line
  - Each game element has to be separated by (at least) one new line
