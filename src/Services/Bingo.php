@@ -404,7 +404,7 @@ class Bingo
     }
 
     /**
-     * Returns the winning row if there was one
+     * Returns the winning row if there was one.
      *
      * @param array<int, array<int>> $winningNumbers Arrays of winning numbers
      *
