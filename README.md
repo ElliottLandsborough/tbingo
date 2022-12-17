@@ -9,7 +9,7 @@ Part solution to [Advent of code 2021/04](https://adventofcode.com/2021/day/4)
 [![codecov](https://codecov.io/gh/ElliottLandsborough/tbingo/branch/main/graph/badge.svg?token=MTITW2TF2F)](https://codecov.io/gh/ElliottLandsborough/tbingo)
 
 ## Requirements
-```
+
 [Composer](https://getcomposer.org/) 
 [PHP](https://www.php.net/) (version 8 or higher)
 
