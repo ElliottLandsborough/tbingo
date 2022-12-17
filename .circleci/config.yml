@@ -22,6 +22,12 @@ jobs:
           name: PHPUnit
           command: php8.1 ./vendor/bin/phpunit
       - run:
+          name: Codecov
+          command: |
+            curl -Os https://uploader.codecov.io/latest/linux/codecov
+            chmod +x codecov
+            ./codecov 
+      - run:
           name: Execute
           command: php8.1 ./bin/app checkBoards < tests/fixtures/input.txt
       - run:
