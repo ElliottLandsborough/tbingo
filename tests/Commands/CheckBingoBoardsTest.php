@@ -4,14 +4,11 @@ namespace ElliottLandsborough\PhpTerminalApp\Tests\Services;
 
 use ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards;
 use ElliottLandsborough\TerminalBingo\Services\Bingo;
-use Exception;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 use ReflectionClass;
 use Symfony\Component\Console\Formatter\NullOutputFormatter;
+use Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class ParseCronTest extends TestCase
 {
@@ -36,11 +33,12 @@ class ParseCronTest extends TestCase
         $class = new ReflectionClass(CheckBingoBoards::class);
         $method = $class->getMethod($name);
         $method->setAccessible(true);
+
         return $method;
     }
 
     /**
-     * Tests provided input
+     * Tests provided input.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
      * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
@@ -90,7 +88,7 @@ EOD;
     }
 
     /**
-     * Tests a bad input
+     * Tests a bad input.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
      * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
@@ -128,7 +126,7 @@ class ConsoleOutput implements OutputInterface
 {
     public function writeln(iterable|string $messages, int $type = self::OUTPUT_NORMAL): void
     {
-        echo $messages . PHP_EOL;
+        echo $messages.PHP_EOL;
     }
 
     public function getFormatter(): OutputFormatterInterface
@@ -139,30 +137,39 @@ class ConsoleOutput implements OutputInterface
     public function write(string|iterable $messages, bool $newline = false, int $options = 0)
     {
     }
+
     public function setVerbosity(int $level)
     {
     }
+
     public function getVerbosity(): int
     {
     }
+
     public function isQuiet(): bool
     {
     }
+
     public function isVerbose(): bool
     {
     }
+
     public function isVeryVerbose(): bool
     {
     }
+
     public function isDebug(): bool
     {
     }
+
     public function setDecorated(bool $decorated)
     {
     }
+
     public function isDecorated(): bool
     {
     }
+
     public function setFormatter(OutputFormatterInterface $formatter)
     {
     }
