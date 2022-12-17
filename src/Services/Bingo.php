@@ -2,8 +2,8 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
-use Generator;
 use Exception;
+use Generator;
 
 class Bingo
 {
