@@ -73,7 +73,7 @@ class ParseCronTest extends TestCase
      * Try bad path.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
-     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo@covers ElliottLandsborough\TerminalBingo\Services\Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
