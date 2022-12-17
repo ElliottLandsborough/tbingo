@@ -138,6 +138,8 @@ class Bingo
 
             // Skip newlines without any other content.
             if (strlen($line) === 0) {
+                // Reset board, move to next line
+                $this->board = [];
                 continue;
             }
 
@@ -202,9 +204,6 @@ class Bingo
         if ($winPosition === 0) {
             $this->losers[] = $this->board;
         }
-
-        // Reset board and continue.
-        $this->board = [];
     }
 
     /**
