@@ -13,9 +13,21 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'checkBoards', description: 'Check some bingo input')]
 class CheckBingoBoards extends Command
 {
+    /**
+     * The path to the input
+     *
+     * @var string
+     */
     protected string $path = 'php://stdin';
 
-    public function setPath(string $path)
+    /**
+     * Sets the input path
+     *
+     * @param string $path The path to the input
+     *
+     * @return void
+     */
+    public function setPath(string $path): void
     {
         if (file_exists($path) === false) {
             throw new Exception("Error: file does not exist `$path`.");

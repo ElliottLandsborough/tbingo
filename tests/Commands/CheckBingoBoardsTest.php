@@ -25,7 +25,6 @@ class ParseCronTest extends TestCase
      * Tests a bad input.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
-     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -49,7 +48,6 @@ class ParseCronTest extends TestCase
      * Executes full command.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
-     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -73,7 +71,6 @@ class ParseCronTest extends TestCase
      * Try bad path.
      *
      * @covers ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards
-     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
