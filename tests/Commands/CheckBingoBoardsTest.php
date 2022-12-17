@@ -6,6 +6,7 @@ use ElliottLandsborough\TerminalBingo\Commands\CheckBingoBoards;
 use ElliottLandsborough\TerminalBingo\Services\Bingo;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use ReflectionMethod;
 use Symfony\Component\Console\Formatter\NullOutputFormatter;
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -28,7 +29,14 @@ class ParseCronTest extends TestCase
         unset($this->command);
     }
 
-    protected static function getMethod($name)
+    /**
+     * Makes a protected function accessible.
+     *
+     * @param string $name Name of the method to make accessible
+     *
+     * @return ReflectionMethod
+     */
+    protected static function getMethod(string $name)
     {
         $class = new ReflectionClass(CheckBingoBoards::class);
         $method = $class->getMethod($name);
