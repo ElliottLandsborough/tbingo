@@ -365,8 +365,8 @@ class Bingo
 
                     // If the winning row is empty.
                     if (count($potentialWins[$rKey]) === 0) {
-                        $winningRow = $this->getWinningRowFromNumbers($winningNumbers);
-                        $this->winningRows[$gamePosition] = $winningRow;
+                        $winner = $this->getWinningRowFromNumbers($winningNumbers);
+                        $this->winningRows[$gamePosition] = $winner;
 
                         // Return the position in the game it wins at.
                         return $gamePosition;
