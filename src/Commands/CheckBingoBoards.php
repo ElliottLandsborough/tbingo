@@ -8,10 +8,22 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Exception;
 
 #[AsCommand(name: 'checkBoards', description: 'Check some bingo input')]
 class CheckBingoBoards extends Command
 {
+    protected string $path = 'php://stdin';
+
+    public function setPath(string $path)
+    {
+        if (file_exists($path) === false) {
+            throw new Exception("Error: file does not exist `$path`.");
+        }
+
+        $this->path = $path;
+    }
+
     /**
      * Execute the command.
      *
@@ -25,7 +37,7 @@ class CheckBingoBoards extends Command
         OutputInterface $output
     ): int {
         $bingo = new Bingo();
-        $bingo->processResource('php://stdin');
+        $bingo->processResource($this->path);
         $this->generateOutput($output, $bingo);
 
         return Command::SUCCESS;
