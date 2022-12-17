@@ -37,7 +37,7 @@ class BingoTest extends TestCase
     /**
      * Tests a horizontal row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -63,7 +63,7 @@ class BingoTest extends TestCase
     /**
      * Tests a horizontal row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -89,7 +89,7 @@ class BingoTest extends TestCase
     /**
      * Tests a vertical row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -114,7 +114,7 @@ class BingoTest extends TestCase
     /**
      * Tests a vertical row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -139,7 +139,7 @@ class BingoTest extends TestCase
     /**
      * Tests a diagonal row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -164,7 +164,7 @@ class BingoTest extends TestCase
     /**
      * Tests a diagonal row.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -189,7 +189,7 @@ class BingoTest extends TestCase
     /**
      * Tests a bad board.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -208,7 +208,7 @@ class BingoTest extends TestCase
     /**
      * Tests a bad game.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
@@ -226,7 +226,7 @@ class BingoTest extends TestCase
     /**
      * Tests a bad game.
      *
-     * @covers Bingo
+     * @covers ElliottLandsborough\TerminalBingo\Services\Bingo
      *
      * @return void
      */
