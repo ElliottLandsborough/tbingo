@@ -13,21 +13,19 @@ Part solution to https://adventofcode.com/2021/day/4
 ## How to run
 
 ```bash
-composer install
-./exec.sh
+make
 ```
 
 ## How to test
 
 ```bash
-composer install
-./vendor/bin/phpunit
+make test
 ```
 
 ## How to test with docker
 
 ```bash
-docker-compose up
+make docker
 ```
 
 ## Output
