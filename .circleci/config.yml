@@ -26,7 +26,8 @@ jobs:
           command: |
             curl -Os https://uploader.codecov.io/latest/linux/codecov
             chmod +x codecov
-            ./codecov 
+            ./codecov
+            bash <(curl -Ls https://coverage.codacy.com/get.sh)
       - run:
           name: Execute
           command: php8.1 ./bin/app checkBoards < tests/fixtures/input.txt
