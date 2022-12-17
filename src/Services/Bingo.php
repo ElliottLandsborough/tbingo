@@ -226,7 +226,7 @@ class Bingo
         }
 
         if ($winPosition === 0) {
-            $this->losers[$winPosition] = $this->board;
+            $this->losers[] = $this->board;
         }
 
         // Reset board and continue.

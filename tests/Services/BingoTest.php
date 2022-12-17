@@ -56,7 +56,41 @@ class BingoTest extends TestCase
             [
                 5, 4, 3, 2, 1,
             ],
-            $winners[10][2]
+            $winners[10][2],
+        );
+
+        // Test some utility functions
+
+        // getBalls
+        $balls = $this->bingo->getBalls();
+
+        $this->assertEquals(
+            [
+                12, 13, 14, 1, 2, 56, 55, 3, 4, 5,
+            ],
+            $balls,
+        );
+
+        // getWinningRows
+        $winningRows = $this->bingo->getWinningRows();
+        $this->assertArrayHasKey(10, $winningRows);
+
+        $this->assertEquals(
+            [
+                5, 4, 3, 2, 1,
+            ],
+            $winningRows[10],
+        );
+
+        // getLosers
+        $losers = $this->bingo->getLosers();
+        $this->assertArrayHasKey(0, $losers);
+
+        $this->assertEquals(
+            [
+                9, 9, 9, 9, 9,
+            ],
+            $losers[0][3],
         );
     }
 
