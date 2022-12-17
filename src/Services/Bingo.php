@@ -137,9 +137,7 @@ class Bingo
             $line = (string) $yield;
 
             // Skip newlines without any other content.
-            if (strlen($line) === 0
-                && str_contains($line, "\n") === true
-            ) {
+            if (strlen($line) === 0) {
                 continue;
             }
 
