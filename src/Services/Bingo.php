@@ -188,9 +188,6 @@ class Bingo
             if (count($this->board) === 5) {
                 $this->extractResults();
             }
-
-            // Reset board and continue.
-            $this->board = [];
         }
 
         return $boardRow;
@@ -214,6 +211,9 @@ class Bingo
         if ($winPosition === 0) {
             $this->losers[$winPosition] = $this->board;
         }
+
+        // Reset board and continue.
+        $this->board = [];
     }
 
     /**
