@@ -2,6 +2,7 @@
 
 namespace ElliottLandsborough\TerminalBingo\Services;
 
+use Generator;
 use Exception;
 
 class Bingo
@@ -103,9 +104,9 @@ class Bingo
      *
      * @param resource $resource File resource
      *
-     * @return \Generator
+     * @return Generator
      */
-    protected function fileStream($resource): \Generator
+    protected function fileStream($resource): Generator
     {
         try {
             while (true) {
@@ -132,7 +133,9 @@ class Bingo
      */
     public function processResource(string $path): void
     {
-        foreach ($this->fileStream(fopen($path, 'r')) as $line) {
+        foreach ($this->fileStream(fopen($path, 'r')) as $yield) {
+            $line = (string) $yield;
+
             // Skip newlines without any other content.
             if (strlen($line) === 0
                 && str_contains($line, "\n") === true
@@ -195,11 +198,13 @@ class Bingo
         // Process board.
         $winPosition = $this->checkForWinner($this->board);
 
+        // This board won, add it to winners, sort winners by position
         if ($winPosition > 0) {
             $this->winners[$winPosition] = $this->board;
             ksort($this->winners);
         }
 
+        // Board lost, add to losers.
         if ($winPosition === 0) {
             $this->losers[] = $this->board;
         }
