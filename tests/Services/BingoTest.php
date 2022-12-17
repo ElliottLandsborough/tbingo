@@ -59,8 +59,6 @@ class BingoTest extends TestCase
             $winners[10][2],
         );
 
-        // Test some utility functions.
-
         // Test getBalls.
         $balls = $this->bingo->getBalls();
 
