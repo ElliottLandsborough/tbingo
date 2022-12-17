@@ -15,7 +15,6 @@ class ParseCronTest extends TestCase
 {
     protected $bingo;
     protected $command;
-    protected $output;
 
     protected function setUp(): void
     {
