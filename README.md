@@ -1,7 +1,5 @@
 # Terminal Bingo
 
-Part solution to [Advent of code 2021/04](https://adventofcode.com/2021/day/4)
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CircleCI](https://circleci.com/gh/ElliottLandsborough/tbingo.svg?style=svg)](https://circleci.com/gh/ElliottLandsborough/tbingo)
 [![Code Style](https://github.styleci.io/repos/578703772/shield?style=flat&branch=main)](https://github.styleci.io/repos/578703772)
