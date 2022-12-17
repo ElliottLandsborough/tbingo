@@ -14,14 +14,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CheckBingoBoards extends Command
 {
     /**
-     * The path to the input
+     * The path to the input.
      *
      * @var string
      */
     protected string $path = 'php://stdin';
 
     /**
-     * Sets the input path
+     * Sets the input path.
      *
      * @param string $path The path to the input
      *
