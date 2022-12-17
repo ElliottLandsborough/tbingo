@@ -10,8 +10,9 @@ Part solution to [Advent of code 2021/04](https://adventofcode.com/2021/day/4)
 
 ## Requirements
 
-[Composer](https://getcomposer.org/) 
-[PHP](https://www.php.net/) (version 8 or higher)
+[Composer](https://getcomposer.org/)
+
+[PHP](https://www.php.net/) version 8 or higher
 
 ## How to run
 
