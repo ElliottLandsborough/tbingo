@@ -22,7 +22,7 @@ jobs:
           name: PHPUnit
           command: XDEBUG_MODE=coverage php8.1 ./vendor/bin/phpunit --coverage-clover coverage.xml
       - run:
-          name: Codecov
+          name: Code coverage
           command: |
             curl -Os https://uploader.codecov.io/latest/linux/codecov
             chmod +x codecov
