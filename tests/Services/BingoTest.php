@@ -92,6 +92,9 @@ class BingoTest extends TestCase
             ],
             $losers[0][3],
         );
+
+        // Test getWinningRowFromNumbers.
+        $this->assertSame([], $this->bingo->getWinningRowFromNumbers([]));
     }
 
     /**
