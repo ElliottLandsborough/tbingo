@@ -12,7 +12,9 @@ Part solution to [Advent of code 2021/04](https://adventofcode.com/2021/day/4)
 
 [Composer](https://getcomposer.org/)
 
-[PHP](https://www.php.net/) version 8 or higher
+[PHP](https://www.php.net/) 8+
+
+[Docker](https://www.docker.com/) (optional)
 
 ## How to run
 
