@@ -114,24 +114,8 @@ class Bingo
                 }
 
                 $line = stream_get_line($resource, 1024, PHP_EOL);
-
-                if ($line === false) {
-                    break;
-                }
-
                 $length = strlen($line);
-
-                while ($length > 0
-                       && (
-                           $line[($length - 1)] === "\r"
-                           || $line[($length - 1)] === "\n"
-                       )
-                ) {
-                    $length--;
-                }
-
                 $line = substr($line, 0, $length);
-
                 yield trim($line);
             }
         } finally {
