@@ -83,7 +83,7 @@ class CheckBingoBoards extends Command
 
                         $winningRow = $winningRows[$position];
 
-                        if (in_array($number, $winningRow)) {
+                        if (in_array($number, $winningRow) === true) {
                             $prefix = '<info>';
                             $suffix = '</info>';
                         }

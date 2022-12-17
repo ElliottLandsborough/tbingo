@@ -168,7 +168,7 @@ class Bingo
                 continue;
             }
 
-            // Line is longer than 0 chars and returned 5 results
+            // Line is longer than 0 chars and returned 5 results.
             if (strlen($line) > 0
                 && count($this->processBoardRowAndExtractResults($line)) === 5
             ) {
@@ -381,7 +381,7 @@ class Bingo
                 foreach ($row as $nKey => $rNumber) {
                     // If game ball is the same as row number.
                     if ($bNumber === $rNumber) {
-                        // Add it to the winning rows array
+                        // Add it to the winning rows array.
                         $winningNumbers[$rKey][$nKey] = $potentialWins[$rKey][$nKey];
 
                         // Remove it from the current row.
