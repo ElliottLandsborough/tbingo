@@ -59,9 +59,9 @@ class BingoTest extends TestCase
             $winners[10][2],
         );
 
-        // Test some utility functions
+        // Test some utility functions.
 
-        // getBalls
+        // Test getBalls.
         $balls = $this->bingo->getBalls();
 
         $this->assertEquals(
@@ -71,7 +71,7 @@ class BingoTest extends TestCase
             $balls,
         );
 
-        // getWinningRows
+        // Test getWinningRows.
         $winningRows = $this->bingo->getWinningRows();
         $this->assertArrayHasKey(10, $winningRows);
 
@@ -82,7 +82,7 @@ class BingoTest extends TestCase
             $winningRows[10],
         );
 
-        // getLosers
+        // Test getLosers.
         $losers = $this->bingo->getLosers();
         $this->assertArrayHasKey(0, $losers);
 
