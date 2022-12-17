@@ -36,6 +36,8 @@ make docker
 
 ## Output
 
+Numbers are highlighted when run in bash.
+
 ```bash
 There were 3 wins and 0 losses.
 
