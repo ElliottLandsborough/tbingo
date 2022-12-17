@@ -37,6 +37,8 @@ class BingoTest extends TestCase
     /**
      * Tests a horizontal row.
      *
+     * @covers Bingo
+     *
      * @return void
      */
     public function testHorizontal1(): void
@@ -60,6 +62,8 @@ class BingoTest extends TestCase
 
     /**
      * Tests a horizontal row.
+     *
+     * @covers Bingo
      *
      * @return void
      */
@@ -85,6 +89,8 @@ class BingoTest extends TestCase
     /**
      * Tests a vertical row.
      *
+     * @covers Bingo
+     *
      * @return void
      */
     public function testVertical1(): void
@@ -107,6 +113,8 @@ class BingoTest extends TestCase
 
     /**
      * Tests a vertical row.
+     *
+     * @covers Bingo
      *
      * @return void
      */
@@ -131,6 +139,8 @@ class BingoTest extends TestCase
     /**
      * Tests a diagonal row.
      *
+     * @covers Bingo
+     *
      * @return void
      */
     public function testDiagonal1(): void
@@ -153,6 +163,8 @@ class BingoTest extends TestCase
 
     /**
      * Tests a diagonal row.
+     *
+     * @covers Bingo
      *
      * @return void
      */
@@ -177,6 +189,8 @@ class BingoTest extends TestCase
     /**
      * Tests a bad board.
      *
+     * @covers Bingo
+     *
      * @return void
      */
     public function testBadBoard1(): void
@@ -194,6 +208,8 @@ class BingoTest extends TestCase
     /**
      * Tests a bad game.
      *
+     * @covers Bingo
+     *
      * @return void
      */
     public function testBadGame1(): void
@@ -209,6 +225,8 @@ class BingoTest extends TestCase
 
     /**
      * Tests a bad game.
+     *
+     * @covers Bingo
      *
      * @return void
      */
