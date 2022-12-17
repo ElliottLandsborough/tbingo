@@ -258,8 +258,8 @@ class Bingo
 
             $number = (int) $potentialNumber;
 
-            if ($number > 75) {
-                $message = "Invalid game: Only 1-75 are ok. `$number` is too high.";
+            if ($number > 75 || $number < 0) {
+                $message = "Invalid game: `$number` is out of range 0-75.";
 
                 throw new Exception($message);
             }

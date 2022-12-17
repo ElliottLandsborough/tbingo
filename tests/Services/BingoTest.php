@@ -249,7 +249,7 @@ class BingoTest extends TestCase
     public function testBadGame1(): void
     {
         $this->expectExceptionMessage(
-            'Invalid game: Only 1-75 are ok. `76` is too high.'
+            'Invalid game: `76` is out of range 0-75.'
         );
 
         $this->bingo->processResource(
