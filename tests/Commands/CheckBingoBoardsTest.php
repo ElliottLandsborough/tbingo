@@ -7,15 +7,30 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class ParseCronTest extends TestCase
+class CheckBingoBoardsTest extends TestCase
 {
-    protected $command;
+    /**
+     * Instance of `CheckBingoBoards`.
+     *
+     * @var CheckBingoBoards
+     */
+    protected CheckBingoBoards $command;
 
+    /**
+     * Runs every time a test starts.
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         $this->command = new CheckBingoBoards();
     }
 
+    /**
+     * Runs every time a test stops.
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         unset($this->command);

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class BingoTest extends TestCase
 {
     /**
-     * Instance of Bingo.
+     * Instance of `Bingo`.
      *
      * @var Bingo
      */
