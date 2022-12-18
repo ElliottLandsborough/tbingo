@@ -34,7 +34,7 @@ make docker
 
 ## Output
 
-Numbers are highlighted when run in bash.
+Numbers are highlighted when run in bash. Visible in the `Execute` step of a [recent completed CircleCI build](https://app.circleci.com/pipelines/github/ElliottLandsborough/tbingo/123/workflows/ce3041f9-a185-49df-8e6a-95507031a201/jobs/123).
 
 ```bash
 There were 3 wins and 0 losses.
